@@ -1,5 +1,4 @@
 <?php require_once APPROOT . '/views/inc/head.php' ?>
-<?php require_once APPROOT . '/views/inc/header.php' ?>
 <div x-data="setup()" :class="{ 'dark': isDark }">
     <div class="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-white dark:bg-gray-700 text-black dark:text-white">
 

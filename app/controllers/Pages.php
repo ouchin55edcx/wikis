@@ -31,5 +31,8 @@ class Pages extends Controller
         ];
         $this->view('dashboard',$data);
     }
+    public function writeWiki() {
+        $this->view('writeWiki');
+    }
 
 }

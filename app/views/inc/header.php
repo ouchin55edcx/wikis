@@ -1,4 +1,4 @@
-<nav class="flex items-center justify-around flex-wrap gap-10 bg-white py-4 lg:px-12 shadow border-solid border-t-2 border-blue-700">
+<nav class="flex items-center justify-around flex-wrap gap-10 bg-white py-4 lg:px-12 shadow border-solid border-t-2 border-blue-700 z-0">
 
     <!-- title -->
     <div class="flex justify-center lg:w-auto w-full lg:border-b-0 pl-6 pr-2 border-solid border-b-2 border-gray-300 pb-5 lg:pb-0">
@@ -22,7 +22,7 @@
     <?php if (isset($_SESSION['userId'])) { ?>
     <div class="flex flex-wrap items-center justify-end gap-12 lg:justify-end lg:flex-1 mt-4 lg:mt-0">
         <div class="h-8 w-auto leading-10 cursor-pointer">
-            <a href="#">
+            <a href="<?=URLROOT?>Pages/writeWiki">
                 <img class="float-left h-8 w-8 object-cover" src="<?= URLROOT ?>img/edit.png">
                 <span>Write</span>
             </a>
