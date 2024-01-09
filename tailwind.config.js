@@ -1,8 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-    content: ["./src/**/*.{html,js}"],
-    theme: {
-      extend: {},
+  content: ["./app/views/**/*.php", "./app/views/**/*.html"],
+  theme: {
+    extend: {},
+  },
+  plugins: [
+    function ({ addVariant }) {
+      addVariant("child", "& > *");
     },
-    plugins: [],
-  }
+  ],
+};
