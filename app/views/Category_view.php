@@ -23,8 +23,7 @@ $categories = $data['categories'];
                     </div>
                 </div>
             </a>
-        <?php endforeach; ?>
+        <?php endforeach; ?>vs<v<s d
     </div>
 </div>
-
 </div>
