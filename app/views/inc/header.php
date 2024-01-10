@@ -18,6 +18,11 @@
         <input type="text" class="w-full py-1 pl-10 pr-4 text-black placeholder-black bg-white border-b border-black dark:placeholder-gray-300 dark:focus:border-gray-300 lg:w-56 lg:border-transparent  focus:outline-none focus:border-gray-60" placeholder="Search">
     </div>
 
+    <div>
+        <a href="<?= URLROOT?>Pages/category" class="border-r-2 border-black text-lg pr-2 mr-2">Category</a>
+        <a href="<?= URLROOT?>Pages/wiki" class="text-lg">Wiki</a>
+    </div>
+
     <!-- logo and navigation links -->
     <?php if (isset($_SESSION['userId'])) { ?>
     <div class="flex flex-wrap items-center justify-end gap-12 lg:justify-end lg:flex-1 mt-4 lg:mt-0">

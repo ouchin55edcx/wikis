@@ -1,6 +1,8 @@
     <?php
-    $categories = $data['categories'];
-    $wiki = $data['wiki'];
+$categories = $data['categories'];
+$wiki = $data['wiki'];
+
+    // var_dump($data)
     ?>
     <?php require_once APPROOT . '/views/inc/head.php' ?>
     <?php require_once APPROOT . '/views/inc/header.php' ?>
@@ -40,7 +42,7 @@
     </style>
 
 
-    <!-- categories  -->
+    <!--top 3 categories  -->
     <div class="flex space-x-4 items-center justify-center m-8 rounded-full bg-slate-100">
         <button id="carousel-prev" class="px-2 py-1 border rounded-md border-gray-400 bg-white shadow">←</button>
         <div class="carousel-container flex overflow-hidden" id="carousel-container">
@@ -94,28 +96,41 @@
         </script>
     </div>
 
-    <section class="dark:bg-white-800 dark:text-gray-100">
-        <div class="container max-w-6xl p-6 mx-auto space-y-6 sm:space-y-12">
-            <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                <?php foreach ($data['wiki'] as $wiki) : ?>
-                    <a href="<?= URLROOT ?><?= $wiki->wiki_id ?>" class="group max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg hover:shadow-xl transition duration-300 ease-in-out">
-                        <img class="object-cover w-full h-44 dark:bg-gray-500" src="<?= URLROOT ?>img/<?= $wiki->wikImage ?>" alt="Wiki Image">
-                        <div class="p-4">
-                            <div class="flex items-center mb-2">
-                                <img class="w-6 h-6 rounded-full" src="<?= URLROOT ?>img/<?= $wiki->usrImage ?>" alt="<?= $wiki->username ?>">
-                                <p class="ml-2 text-sm text-gray-400"><?= $wiki->username ?></p>
-                            </div>
-                            <h2 class="text-2xl font-semibold text-black group-hover:underline group-focus:underline"><?= $wiki->title ?></h2>
-                            <p class="mt-2 text-black"><?= $articleDesc = substr($wiki->content, 0, 120); ?></p>
-                            <span class="text-xs text-gray-700"><?= $wiki->created_at ?></span>
-                        </div>
-                    </a>
-                <?php endforeach; ?>
-            </div>
+    <!-- top 3 wiki  -->
 
-            <div class="flex justify-center">
-            </div>
+    <section class="dark:bg-white-800 dark:text-gray-100">
+    <div class="container max-w-6xl p-6 mx-auto space-y-6 sm:space-y-12">
+        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <?php foreach ($data['wiki'] as $wiki) : ?>
+                <div class="group max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg hover:shadow-xl transition duration-300 ease-in-out">
+                    <a href="<?= URLROOT ?><?= $wiki->wiki_id ?>">
+                        <img class="object-cover w-full h-44 dark:bg-gray-500" src="<?= URLROOT ?>img/<?= $wiki->wikImage ?>" alt="Wiki Image">
+                    </a>
+                    <div class="p-4">
+                        <div class="flex items-center mb-2">
+                            <a href="<?= $wiki->category_id ?>" class="inline-block px-2 py-1 text-xs font-semibold text-gray-700 bg-gray-200 rounded-full"><?= $wiki->category_name ?></a>
+                            <p class="ml-2 text-sm text-gray-400">Written by: <?= $wiki->username ?></p>
+                        </div>
+
+                        <a href="<?= URLROOT ?><?= $wiki->wiki_id?>" class="text-2xl font-semibold text-black group-hover:underline group-focus:underline"><?= $wiki->title ?></a>
+                        <p class="mt-2 text-black"><?= $articleDesc = substr($wiki->content, 0, 120); ?></p>
+                        <span class="text-xs text-gray-700"><?= $wiki->created_at ?></span>
+
+                        <div class="mt-4">
+                            <p class="text-sm font-medium text-gray-500">Tags:</p>
+                            <?php foreach ($data['wiki'] as $wiki) : ?>
+                                <span class="inline-block px-2 py-1 text-xs font-semibold text-gray-700 bg-gray-200 rounded-full"><?= $wiki->tag_names ?></span>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
         </div>
-    </section>
+
+        <div class="flex justify-center">
+        </div>
+    </div>
+</section>
+
 
     <?php require_once APPROOT . '/views/inc/footer.php' ?>

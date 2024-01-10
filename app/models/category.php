@@ -13,6 +13,12 @@ class Category
         $result = $this->db->fetchAll();
         return $result ;
     }
+    public function getTopCategories()
+    {
+        $this->db->query("SELECT * FROM Categories ORDER BY created_at DESC, updated_at DESC limit 1");
+        $result = $this->db->fetchAll();
+        return $result ;
+    }
 
     public function getCategoryById($id) {
         $this->db->query("SELECT * FROM Categories WHERE category_id = :category_id");

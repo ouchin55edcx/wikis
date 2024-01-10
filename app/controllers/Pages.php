@@ -11,13 +11,32 @@ class Pages extends Controller
     }
     public function home()
     {
-        $categories =  $this->categoryModel->getCategories();
-        $wiki = $this->wikiModel->getWiki();
+        $categories =  $this->categoryModel->getTopCategories();
+        $wiki = $this->wikiModel->getTopWiki();
         $data = [   
             'categories' => $categories,
             'wiki' => $wiki
         ];
         $this->view('home',$data);
+    }
+    public function wiki()
+    {
+        $wiki = $this->wikiModel->getWiki();
+        $categories =  $this->categoryModel->getCategories();
+        $data = [   
+            
+            'categories' => $categories,
+            'wiki' => $wiki
+        ];
+        $this->view('wiki',$data);
+    }
+    public function category()
+    {
+        $categories =  $this->categoryModel->getCategories();
+        $data = [   
+            'categories' => $categories,
+        ];
+        $this->view('category',$data);
     }
 
 
@@ -44,5 +63,6 @@ class Pages extends Controller
         $this->view('tag',$data);
 
     }
+
 
 }

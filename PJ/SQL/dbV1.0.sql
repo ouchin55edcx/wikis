@@ -42,3 +42,5 @@ CREATE TABLE Wikis (
     FOREIGN KEY (tag_id) REFERENCES Tags(tag_id),
     PRIMARY KEY (wiki_id, tag_id)
 );
+
+
