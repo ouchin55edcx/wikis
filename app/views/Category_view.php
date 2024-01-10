@@ -27,12 +27,4 @@ $categories = $data['categories'];
     </div>
 </div>
 
-
-
-
-
-
-
-
-
 </div>
