@@ -3,9 +3,11 @@ class Pages extends Controller
 {
     private $categoryModel;
     private $wikiModel;
+    private $tag;
     function __construct() {
         $this->categoryModel = $this->model('category');
         $this->wikiModel = $this->model('wiki');
+        $this->tag = $this->model('tag');
     }
     public function home()
     {
@@ -33,6 +35,14 @@ class Pages extends Controller
     }
     public function writeWiki() {
         $this->view('writeWiki');
+    }
+    public function tag() {
+        $tag = $this->tag->getTag();
+        $data = [   
+            'tag' => $tag
+        ];
+        $this->view('tag',$data);
+
     }
 
 }

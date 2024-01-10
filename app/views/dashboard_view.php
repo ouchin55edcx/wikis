@@ -49,7 +49,7 @@
                 <img class="w-12 h-12 rounded-full absolute right-3 top-8" src="<?=URLROOT?>img/992651.png" alt="">
             </a>
 
-            <!-- Client Table -->
+            <!-- Category Table -->
             <div class="mt-4 mx-4">
                 <div class="w-full overflow-hidden rounded-lg shadow-xs">
                     <div class="w-full overflow-x-auto">
@@ -97,27 +97,4 @@
         </div>
     </div>
 </div>
-<script>
-    const setup = () => {
-        const getTheme = () => {
-            if (window.localStorage.getItem('dark')) {
-                return JSON.parse(window.localStorage.getItem('dark'))
-            }
-            return !!window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
-        }
-
-        const setTheme = (value) => {
-            window.localStorage.setItem('dark', value)
-        }
-
-        return {
-            loading: true,
-            isDark: getTheme(),
-            toggleTheme() {
-                this.isDark = !this.isDark
-                setTheme(this.isDark)
-            },
-        }
-    }
-</script>
 <?php require_once APPROOT . '/views/inc/footer.php' ?>

@@ -1,7 +1,7 @@
 <?php require_once APPROOT . '/views/inc/head.php' ?>
 <?php require_once APPROOT . '/views/inc/header.php' ?>
 
-<div class="flex items-center justify-center h-screen z-20">
+<div class="flex items-center justify-center h-screen z-0">
     <div class="w-[70%] mt-5">
         <div class="container mx-auto my-8 p-8 bg-white rounded shadow-lg">
             <h1 class="text-3xl font-bold mb-4">Create Article</h1>
@@ -35,56 +35,21 @@
             </div>
 
             <!-- Add Tags -->
-            <div class="mb-4">
-                <label for="add-tags" class="block text-sm font-medium text-gray-700">Add Tags</label>
-                <input type="text" id="add-tags" name="add-tags" class="mt-1 block w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+            <div class="bg-gray-100">
+                <div class="container mx-auto p-6">
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <h2 class="text-lg font-semibold mb-4">Tag Cloud</h2>
+                        <div class="flex flex-wrap gap-2">
+                            <a href="#" class="bg-blue-200 hover:bg-blue-300 py-1 px-2 rounded-lg text-sm">Technology</a>
+                            <a href="#" class="bg-green-200 hover:bg-green-300 py-1 px-2 rounded-lg text-sm">Programming</a>
+                            <a href="#" class="bg-yellow-200 hover:bg-yellow-300 py-1 px-2 rounded-lg text-sm">Web Development</a>
+                            <a href="#" class="bg-indigo-200 hover:bg-indigo-300 py-1 px-2 rounded-lg text-sm">Design</a>
+                            <a href="#" class="bg-purple-200 hover:bg-purple-300 py-1 px-2 rounded-lg text-sm">AI</a>
+                            <a href="#" class="bg-pink-200 hover:bg-pink-300 py-1 px-2 rounded-lg text-sm">Machine Learning</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <div class="mb-4">
-    <label class="block text-sm font-medium text-gray-700">Tags</label>
-    <div class="flex flex-wrap" id="tagContainer">
-        <label for="tag1" class="mr-2 mb-2">
-            <input type="radio" id="tag1" name="tags" value="Tag1" class="hidden">
-            <span class="px-2 py-1 bg-gray-200 rounded cursor-pointer select-none" onclick="addTag('Tag1')">Tag1</span>
-        </label>
-
-        <label for="tag2" class="mr-2 mb-2">
-            <input type="radio" id="tag2" name="tags" value="Tag2" class="hidden">
-            <span class="px-2 py-1 bg-gray-200 rounded cursor-pointer select-none" onclick="addTag('Tag2')">Tag2</span>
-        </label>
-
-        <label for="tag3" class="mr-2 mb-2">
-            <input type="radio" id="tag3" name="tags" value="Tag3" class="hidden">
-            <span class="px-2 py-1 bg-gray-200 rounded cursor-pointer select-none" onclick="addTag('Tag3')">Tag3</span>
-        </label>
-        <!-- Add more static tags as needed -->
-    </div>
-</div>
-
-<!-- Input field to store selected tags -->
-<input type="text" id="selectedTagsInput" name="selectedTags" class="mt-1 block w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
-
-<script>
-    function addTag(tag) {
-        // Get the current value of the input field
-        let currentTags = document.getElementById('selectedTagsInput').value;
-
-        // Add the selected tag to the current value
-        currentTags = currentTags ? currentTags + ', ' + tag : tag;
-
-        // Update the input field value
-        document.getElementById('selectedTagsInput').value = currentTags;
-
-        // You can also visually indicate the selected tag, for example, by changing its color
-        // For demonstration purposes, let's change the background color to green
-        document.getElementById('tagContainer').querySelector(`[value="${tag}"]`).style.backgroundColor = 'green';
-    }
-</script>
-
-
-
-
-
             <!-- Push Button -->
             <div>
                 <button id="push-button" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Push Article</button>
