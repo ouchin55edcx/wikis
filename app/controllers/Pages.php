@@ -63,6 +63,21 @@ class Pages extends Controller
         $this->view('tag',$data);
 
     }
+    public function categorieCnt() {
+
+        
+        $this->view('categorieCnt');
+
+    }
+    public function wikiCnt()
+    {
+        $categories =  $this->categoryModel->getTopCategories();
+        $wiki = $this->wikiModel->getTopWiki();
+        $data = [   
+            'wiki' => $wiki
+        ];
+        $this->view('wikiCnt',$data);
+    }
 
 
 }

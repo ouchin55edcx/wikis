@@ -7,7 +7,7 @@
     <div class="container max-w-6xl p-6 mx-auto space-y-6 sm:space-y-12">
         <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             <?php foreach ($data['wiki'] as $wiki) : ?>
-                <a href="<?= URLROOT ?><?= $wiki->wiki_id ?>" class="group max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg hover:shadow-xl transition duration-300 ease-in-out">
+                <a href="<?= URLROOT ?>Pages/wikiCnt/<?= $wiki->wiki_id ?>" class="group max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg hover:shadow-xl transition duration-300 ease-in-out">
                     <img class="object-cover w-full h-44 dark:bg-gray-500" src="<?= URLROOT ?>img/<?= $wiki->wikImage ?>" alt="Wiki Image">
                     <div class="p-4">
                         <div class="flex items-center mb-2">
@@ -28,6 +28,7 @@
                         </div>
                     </div>
                 </a>
+                
             <?php endforeach; ?>
         </div>
 
