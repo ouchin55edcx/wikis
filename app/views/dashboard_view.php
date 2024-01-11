@@ -38,8 +38,8 @@
                         </svg>
                     </div>
                     <div class="text-right">
-                        <p class="text-2xl">$11,257</p>
-                        <p>Sales</p>
+                        <p class="text-2xl"><?=$data['strCat']?></p>
+                        <p>Category</p>
                     </div>
                 </div>
             </div>

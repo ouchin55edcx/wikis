@@ -43,9 +43,25 @@ class Wiki
         return $result ;
     }
 
-    // public function getWikiById($id)  {
-    
-        
-    // }
+    public function getWikiById($id)  {
+        $this->db->query("SELECT * from wikis WHERE wiki_id = :wiki_id");
+        $this->db->bind(':wiki_id', $id);
+        $result = $this->db->fetch();
+        return $result ;
+    }
 
+    public function updateWikiImage($image,$id) {
+        $this->db->query("UPDATE `wikis` SET `wikImage`=:image WHERE `wiki_id` = :id");
+        $this->db->bind(':image', $image);
+        $this->db->bind(':id', $id);
+        $this->db->execute();
+    }
+    public function updateWikiSansImage($title,$content,$category_id,$wiki_id) {
+        $this->db->query("UPDATE `wikis` SET `title`=:title,`content`=:content,`category_id`=:category_id WHERE`wiki_id`=:wiki_id");
+        $this->db->bind(':title', $title);
+        $this->db->bind(':content', $content);
+        $this->db->bind(':category_id', $category_id);
+        $this->db->bind(':wiki_id', $wiki_id);
+        $this->db->execute();
+    }
 }

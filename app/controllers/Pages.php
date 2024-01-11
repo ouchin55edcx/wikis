@@ -50,6 +50,7 @@ class Pages extends Controller
         $categories =  $this->categoryModel->getCategories();
         $data = [   
             'categories' => $categories,
+            
         ];
         $this->view('category',$data);
     }
@@ -62,8 +63,10 @@ class Pages extends Controller
 
     public function dashboard() {
         $categories =  $this->categoryModel->getCategories();
+        $strCat=$this->categoryModel->categoryCount();
         $data = [   
-            'categories' => $categories
+            'categories' => $categories,
+            'strCat' => $strCat
         ];
         $this->view('dashboard',$data);
     }
@@ -112,12 +115,6 @@ class Pages extends Controller
             'wiki' => $wiki
         ];
         $this->view('wikiCnt',$data);
-    }
-    public function editWiki()
-    {
-        $wiki = $this->wikiModel->getWikiById();
-
-        $this->view('editWiki');
     }
 
 

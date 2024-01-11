@@ -43,4 +43,11 @@ class Category
         $this->db->bind(':category_name',$catName);
         $this->db->execute();
     }
+
+    public function categoryCount() {
+        $this->db->query("SELECT * FROM Categories ");
+        $result = $this->db->rowCount();
+        return $result ;
+        
+    }
 }

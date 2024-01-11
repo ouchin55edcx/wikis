@@ -3,19 +3,20 @@
 
 <div class="flex items-center justify-center h-screen z-0">
     <div class="w-[70%] mt-5">
-        <form method="post" action="<?= URLROOT ?>WikiController/InsertWiki" enctype="multipart/form-data" class="container mx-auto my-8 p-8 bg-white rounded shadow-lg">
+        <form method="post" action="<?= URLROOT ?>WikiController/UpdateWiki" enctype="multipart/form-data" class="container mx-auto my-8 p-8 bg-white rounded shadow-lg">
             <h1 class="text-3xl font-bold mb-4">Create Article</h1>
 
             <!-- Article Title -->
             <div class="mb-4">
                 <label for="article-title" class="block text-sm font-medium text-gray-700">Title</label>
-                <input type="text" value="" id="article-title" name="title" class="mt-1 block w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                <input type="text" value="<?=$data['wikiInfo']->title?>" id="article-title" name="title" class="mt-1 block w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                <input type="hidden" value="<?=$data['wikiInfo']->wiki_id?>" name="idWiki">
             </div>
 
             <!-- Article Content -->
             <div class="mb-4">
                 <label for="article-content" class="block text-sm font-medium text-gray-700">Content</label>
-                <textarea id="article-content" name="content" rows="5" class="mt-1 block w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"></textarea>
+                <textarea id="article-content" name="content" rows="5" class="mt-1 block w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"><?=$data['wikiInfo']->content?></textarea>
             </div>
 
             <!-- Article Image -->
@@ -28,9 +29,9 @@
             <div class="mb-4">
                 <label for="select-category" class="block text-sm font-medium text-gray-700">Select Category</label>
                 <select required id="select-category" name="select-category" class="mt-1 block w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
-                    <option value="" disabled selected>Category</option>
-                    <?php foreach ($data['categories'] as $category) { ?>
-                        <option value="<?= $category->category_id ?>"><?= $category->category_name ?></option>
+                    <option value="" disabled>Category</option>
+                    <?php foreach ($data['cats'] as $category) { ?>
+                        <option <?php if($category->category_id == $data['wikiInfo']->category_id) echo' selected ' ?> value="<?= $category->category_id ?>"><?= $category->category_name ?></option>
                     <?php } ?>
                 </select>
             </div>
@@ -41,10 +42,10 @@
                     <div class="bg-white p-6 rounded-lg shadow-lg">
                         <h2 class="text-lg font-semibold mb-4">Tag Cloud</h2>
                         <div class="flex flex-wrap gap-2">
-                        <?php foreach ($data['tag'] as $tag) { ?>
-                            <input type="checkbox" id="<?= $tag->tag_name ?>" name="tag[]" value="<?= $tag->tag_id ?>"/>
+                        <?php foreach ($data['tags'] as $tag) { ?>
+                            <input type="checkbox" id="<?= $tag->tag_name ?>" name="tag[]" value="<?= $tag->tag_id ?>"  <?php if($tag->selected == 'select') echo' checked ' ?>/>
                             <label for="<?= $tag->tag_name ?>"><?= $tag->tag_name ?></label>
-                            <?php } ?>
+                        <?php } ?>
                         </div>
                     </div>
                 </div>

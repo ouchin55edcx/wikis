@@ -29,8 +29,8 @@
                         </div>
                         <?php if (isset($_SESSION['userId']) && $_SESSION['userId'] == $wiki->user_id) : ?>
                             <div class="flex justify-between mt-4">
-                                <a href="<?= URLROOT ?>Pages/editWiki/<?= $wiki->wiki_id ?>" class="text-black hover:underline">Edit</a>
-                                <a href="<?= URLROOT ?>Pages/deleteWiki/<?= $wiki->wiki_id ?>" class="text-black hover:underline">Delete</a>
+                                <a href="<?= URLROOT ?>WikiController/editWiki/<?= $wiki->wiki_id ?>" class="text-black hover:underline">Edit</a>
+                                <a href="<?= URLROOT ?>WikiController/deleteWiki/<?= $wiki->wiki_id ?>" class="text-black hover:underline">Delete</a>
                             </div>
                         <?php endif; ?>
                     </div>

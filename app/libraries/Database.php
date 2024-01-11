@@ -76,6 +76,7 @@ class Database
     //row Count
     public function rowCount()
     {
+        $this->stmt->execute();
         return $this->stmt->rowCount();
     }
     public function fetchColumn()

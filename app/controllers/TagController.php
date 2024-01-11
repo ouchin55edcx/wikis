@@ -32,5 +32,4 @@ class TagController extends Controller
         redirect('Pages/tag');
     }
 
-
 }

@@ -13,4 +13,11 @@ class WikiTag
         $this->db->bind(':idTag', $idTag);
         return $this->db->execute();
     }
+    
+    public function getAllIdTagByIdWiki($id) {
+        $this->db->query("SELECT *from wikitags WHERE wiki_id=:idWiki");
+        $this->db->bind(':idWiki', $id);
+        $result = $this->db->fetchAll();
+        return $result ;
+    }
 }
