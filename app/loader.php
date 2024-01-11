@@ -1,6 +1,6 @@
 <?php
 session_start();
-$_SESSION['userId'] = 1;
+$_SESSION['userId'] = 40;
 // session_destroy();                   
 include_once 'configs/config.php';
 include_once 'helpers/redirect.php';

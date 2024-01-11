@@ -9,7 +9,7 @@
             <!-- Article Title -->
             <div class="mb-4">
                 <label for="article-title" class="block text-sm font-medium text-gray-700">Title</label>
-                <input type="text" id="article-title" name="title" class="mt-1 block w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                <input type="text" value="" id="article-title" name="title" class="mt-1 block w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
             </div>
 
             <!-- Article Content -->

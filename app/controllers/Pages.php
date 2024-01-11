@@ -113,6 +113,12 @@ class Pages extends Controller
         ];
         $this->view('wikiCnt',$data);
     }
+    public function editWiki()
+    {
+        $wiki = $this->wikiModel->getWikiById();
+
+        $this->view('editWiki');
+    }
 
 
 }

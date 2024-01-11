@@ -27,4 +27,25 @@ class Wiki
         return $result ;
     }
 
+    public function insertWiki($title, $content, $wikiImg, $category, $user_id)
+    {
+        $this->db->query('INSERT INTO Wikis (title, content, wikImage, category_id, user_id) VALUES (:title, :content, :wikiImg, :category, :user_id)');
+        $this->db->bind(':title', $title);
+        $this->db->bind(':content', $content);
+        $this->db->bind(':wikiImg', $wikiImg);
+        $this->db->bind(':category', $category);
+        $this->db->bind(':user_id', $user_id);
+        return $this->db->execute();
+    }
+    public function getLastWiki() {
+        $this->db->query("SELECT * from wikis ORDER BY wiki_id DESC limit 1");
+        $result = $this->db->fetch();
+        return $result ;
+    }
+
+    // public function getWikiById($id)  {
+    
+        
+    // }
+
 }
