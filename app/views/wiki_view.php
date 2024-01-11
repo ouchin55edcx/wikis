@@ -22,8 +22,8 @@
 
                         <div class="mt-4">
                             <p class="text-sm font-medium text-gray-500">Tags:</p>
-                            <?php foreach ($data['wiki'] as $wiki) : ?>
-                                <span class="inline-block px-2 py-1 text-xs font-semibold text-gray-700 bg-gray-200 rounded-full"><?= $wiki->tag_names ?></span>
+                            <?php foreach ($wiki->tag_names as $tag_name) : ?>
+                                <span class="inline-block px-2 py-1 text-xs font-semibold text-gray-700 bg-gray-200 rounded-full"><?= $tag_name ?></span>
                             <?php endforeach; ?>
                         </div>
                     </div>
@@ -37,5 +37,3 @@
     </div>
 </section>
 
-
-<?php require_once APPROOT . '/views/inc/foot.php' ?>

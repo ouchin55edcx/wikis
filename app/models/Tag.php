@@ -13,6 +13,12 @@ class Tag
         $result = $this->db->fetchAll();
         return $result ;
     }
+    public function getAllTag()
+    {
+        $this->db->query("SELECT * FROM tags ");
+        $result = $this->db->fetchAll();
+        return $result ;
+    }
 
     public function insert($tagName) {
         $this->db->query("INSERT INTO `tags`(`tag_name`) VALUES (:tag_name)");

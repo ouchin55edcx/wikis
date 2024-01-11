@@ -12,7 +12,15 @@ class Wiki
         $this->db->query("SELECT * FROM wiki");
         $result = $this->db->fetchAll();
         return $result ;
-    }    public function getTopWiki()
+    }    
+    public function getWikiByCategoryId($id)
+    {
+        $this->db->query("SELECT * FROM `wiki` WHERE `category_id`=:category_id");
+        $this->db->bind(":category_id",$id);
+        $result = $this->db->fetchAll();
+        return $result ;
+    }    
+    public function getTopWiki()
     {
         $this->db->query("SELECT *from wiki limit 3");
         $result = $this->db->fetchAll();

@@ -11,7 +11,7 @@ $categories = $data['categories'];
     <p class="mb-12 text-lg text-gray-500">Here are a few of the awesome categories we provide.</p>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
         <?php foreach ($categories as $category) : ?>
-            <a href="<?= URLROOT?>Pages/categorieCnt" <?php echo $category->category_id; ?>" class="w-full">
+            <a href="<?= URLROOT?>Pages/categorieCnt/<?=$category->category_id;?>" class="w-full">
                 <div class="relative h-full">
                     <span class="absolute top-0 left-0 w-full h-full mt-1 ml-1 bg-green-500 rounded-lg"></span>
                     <div class="relative h-full p-5 bg-white border-2 border-green-500 rounded-lg">
@@ -28,4 +28,3 @@ $categories = $data['categories'];
 </div>
 </div>
 
-<?php require_once APPROOT . '/views/inc/foot.php' ?>
