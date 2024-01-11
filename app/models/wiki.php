@@ -64,4 +64,10 @@ class Wiki
         $this->db->bind(':wiki_id', $wiki_id);
         $this->db->execute();
     }
+    public function wikiCount() {
+        $this->db->query("SELECT * FROM wikis ");
+        $result = $this->db->rowCount();
+        return $result ;
+        
+    }
 }

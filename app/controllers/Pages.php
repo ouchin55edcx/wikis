@@ -64,9 +64,12 @@ class Pages extends Controller
     public function dashboard() {
         $categories =  $this->categoryModel->getCategories();
         $strCat=$this->categoryModel->categoryCount();
+        $strWiki = $this->wikiModel->wikiCount();
         $data = [   
             'categories' => $categories,
-            'strCat' => $strCat
+            'strCat' => $strCat,
+            'strWiki' => $strWiki,
+
         ];
         $this->view('dashboard',$data);
     }
