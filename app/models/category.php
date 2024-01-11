@@ -15,7 +15,7 @@ class Category
     }
     public function getTopCategories()
     {
-        $this->db->query("SELECT * FROM Categories ORDER BY created_at DESC, updated_at DESC limit 1");
+        $this->db->query("SELECT * FROM Categories ORDER BY created_at DESC, updated_at DESC limit 3");
         $result = $this->db->fetchAll();
         return $result ;
     }

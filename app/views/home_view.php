@@ -43,58 +43,26 @@ $wiki = $data['wiki'];
 
 
     <!--top 3 categories  -->
-    <div class="flex space-x-4 items-center justify-center m-8 rounded-full bg-slate-100">
-        <button id="carousel-prev" class="px-2 py-1 border rounded-md border-gray-400 bg-white shadow">←</button>
-        <div class="carousel-container flex overflow-hidden" id="carousel-container">
-            <?php foreach ($categories as $category) : ?>
-                <div class="carousel-item ">
-                    <a class="" href="<?php echo $category->category_id; ?>">
-                        <?php echo $category->category_name; ?>
-                    </a>
+    <div class="container relative flex flex-col justify-between h-full max-w-6xl px-10 mx-auto xl:px-0 mt-5">
+    <h2 class="mb-1 text-3xl font-extrabold leading-tight text-gray-900">Services</h2>
+    <p class="mb-12 text-lg text-gray-500">Here are a few of the awesome Services we provide.</p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+        <?php foreach ($categories as $category) : ?>
+            <a href="<?php echo $category->category_id; ?>" class="w-full">
+                <div class="relative h-full">
+                    <span class="absolute top-0 left-0 w-full h-full mt-1 ml-1 bg-green-500 rounded-lg"></span>
+                    <div class="relative h-full p-5 bg-white border-2 border-green-500 rounded-lg">
+                        <div class="flex items-center -mt-1">
+                            <!-- <img src="" alt="<?php echo $category->category_name; ?>" class="w-full h-auto mb-2"> -->
+                            <h3 class="my-2 ml-3 text-lg font-bold text-gray-800"><?= $category->category_name; ?></h3>
+                        </div>
+                        <p class="mt-3 mb-1 text-xs font-medium text-green-500 uppercase">------------</p>
+                    </div>
                 </div>
-            <?php endforeach; ?>
-        </div>
-
-        <button id="carousel-next" class="px-2 py-1 border rounded-md border-gray-400 bg-white shadow">→</button>
-        <script>
-            document.addEventListener("DOMContentLoaded", function() {
-                const container = document.getElementById("carousel-container");
-                const prevButton = document.getElementById("carousel-prev");
-                const nextButton = document.getElementById("carousel-next");
-
-                let currentIndex = 0;
-                const itemsPerPage = 3;
-
-                function updateCarousel() {
-                    const start = currentIndex * itemsPerPage;
-                    const end = start + itemsPerPage;
-
-                    const items = container.children;
-
-                    for (let i = 0; i < items.length; i++) {
-                        items[i].style.display = i >= start && i < end ? "block" : "none";
-                    }
-                }
-
-                function prevButtonClick() {
-                    currentIndex = Math.max(0, currentIndex - 1);
-                    updateCarousel();
-                }
-
-                function nextButtonClick() {
-                    const maxIndex = Math.ceil(container.children.length / itemsPerPage) - 1;
-                    currentIndex = Math.min(maxIndex, currentIndex + 1);
-                    updateCarousel();
-                }
-
-                prevButton.addEventListener("click", prevButtonClick);
-                nextButton.addEventListener("click", nextButtonClick);
-
-                // Initial update
-                updateCarousel();
-            });
-        </script>
+            </a>
+        <?php endforeach; ?>
     </div>
+</div>
 
     <!-- top 3 wiki  -->
 
