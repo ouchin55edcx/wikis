@@ -6,41 +6,6 @@
     ?>
     <?php require_once APPROOT . '/views/inc/head.php' ?>
     <?php require_once APPROOT . '/views/inc/header.php' ?>
-    <style>
-        .flex {
-            display: flex;
-        }
-
-        .space-x-4 {
-            margin-right: 1rem;
-        }
-
-        .items-center {
-            align-items: center;
-        }
-
-        .justify-center {
-            justify-content: center;
-        }
-
-        .carousel-container {
-            display: flex;
-            overflow: hidden;
-        }
-
-        .carousel-item {
-            min-width: 200px;
-            /* Set the width of each carousel item */
-            box-sizing: border-box;
-            text-align: center;
-            padding: 8px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            background-color: #fff;
-            margin: 0 4px;
-        }
-    </style>
-
 
     <!--top 3 categories  -->
     <div class="container relative flex flex-col justify-between h-full max-w-6xl px-10 mx-auto xl:px-0 mt-5">
