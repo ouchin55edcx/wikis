@@ -1,7 +1,7 @@
 <?php
 session_start();
 $_SESSION['userId'] = 1;
-// session_destroy();
+// session_destroy();                   
 include_once 'configs/config.php';
 include_once 'helpers/redirect.php';
 

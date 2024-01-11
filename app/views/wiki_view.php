@@ -36,3 +36,6 @@
         </div>
     </div>
 </section>
+
+
+<?php require_once APPROOT . '/views/inc/foot.php' ?>

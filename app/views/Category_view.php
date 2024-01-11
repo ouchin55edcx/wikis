@@ -27,3 +27,5 @@ $categories = $data['categories'];
     </div>
 </div>
 </div>
+
+<?php require_once APPROOT . '/views/inc/foot.php' ?>

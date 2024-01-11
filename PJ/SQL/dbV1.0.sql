@@ -14,15 +14,7 @@ CREATE TABLE Tags (
 
 );
 
-CREATE TABLE Users (
-    user_id INT PRIMARY KEY AUTO_INCREMENT,
-    username VARCHAR(255),
-    email VARCHAR(255) UNIQUE,
-    password VARCHAR(255), 
-    usrImage VARCHAR(255),
-    is_admin BOOLEAN DEFAULT false,
-    joining_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP 
-);
+
 
 CREATE TABLE Wikis (
     wiki_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -41,6 +33,16 @@ CREATE TABLE Wikis (
     FOREIGN KEY (wiki_id) REFERENCES Wikis(wiki_id),
     FOREIGN KEY (tag_id) REFERENCES Tags(tag_id),
     PRIMARY KEY (wiki_id, tag_id)
+);
+
+CREATE TABLE Users (
+    user_id INT PRIMARY KEY AUTO_INCREMENT,
+    username VARCHAR(255),
+    email VARCHAR(255) UNIQUE,
+    password VARCHAR(255), 
+    usrImage VARCHAR(255),
+    is_admin BOOLEAN DEFAULT false,
+    joining_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP 
 );
 
 

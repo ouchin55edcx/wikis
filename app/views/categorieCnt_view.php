@@ -16,3 +16,6 @@
 
 <!-- wiki -->
 
+
+
+<?php require_once APPROOT . '/views/inc/foot.php' ?>
