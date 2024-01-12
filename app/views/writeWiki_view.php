@@ -4,12 +4,13 @@
 <div class="flex items-center justify-center h-screen z-0">
     <div class="w-[70%] mt-5">
         <form method="post" action="<?= URLROOT ?>WikiController/InsertWiki" enctype="multipart/form-data" class="container mx-auto my-8 p-8 bg-white rounded shadow-lg">
-            <h1 class="text-3xl font-bold mb-4">Create Article</h1>
+            <h1 class="text-3xl font-bold mb-4">Create  Wiki</h1>
 
             <!-- Article Title -->
             <div class="mb-4">
                 <label for="article-title" class="block text-sm font-medium text-gray-700">Title</label>
                 <input type="text" id="article-title" name="title" class="mt-1 block w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                <input type="hidden" value="<?=$_SESSION['user_id']?>" name="user_id">
             </div>
 
             <!-- Article Content -->

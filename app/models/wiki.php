@@ -29,7 +29,7 @@ class Wiki
 
     public function insertWiki($title, $content, $wikiImg, $category, $user_id)
     {
-        $this->db->query('INSERT INTO Wikis (title, content, wikImage, category_id, user_id) VALUES (:title, :content, :wikiImg, :category, :user_id)');
+        $this->db->query('INSERT INTO Wikis (title, content, wikImage, category_id, `user_id`) VALUES (:title, :content, :wikiImg, :category, :user_id)');
         $this->db->bind(':title', $title);
         $this->db->bind(':content', $content);
         $this->db->bind(':wikiImg', $wikiImg);
@@ -70,4 +70,12 @@ class Wiki
         return $result ;
         
     }
+
+    // public function getWikiByUserId($user_id)  {
+    //     $this->db->query("SELECT * from wikis WHERE user_id = :user_id");
+    //     $this->db->bind(':user_id', $user_id);
+    //     $result = $this->db->fetch();
+    //     return $result ;
+    // }
+
 }

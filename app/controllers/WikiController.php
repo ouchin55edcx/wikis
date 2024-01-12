@@ -31,9 +31,12 @@ class WikiController extends Controller
 
         if (isset($uploadedImage['name']) && isset($uploadedImage['tmp_name'])) {
             $imagePath = FOLDER_IMAGE . $uploadedImage['name'];
+           
+            $user_id= $_SESSION['user_id'] ;
+    
 
             if (move_uploaded_file($uploadedImage['tmp_name'], $imagePath)) {
-                $this->wikiModel->insertWiki($title, $content, $uploadedImage['name'], $select_category, $_SESSION['userId']);
+                $this->wikiModel->insertWiki($title, $content, $uploadedImage['name'], $select_category,$user_id);
                 $lastWikiInsert = $this->wikiModel->getLastWiki();
                 $idLastWiki = $lastWikiInsert->wiki_id;
                 foreach ($tagArray as $IdTag) {

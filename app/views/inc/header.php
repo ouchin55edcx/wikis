@@ -31,6 +31,8 @@
     <div class="flex items-center mt-4 md:mt-0">
         <?php if (isset($_SESSION['user_id'])) { ?>
             <a href="<?= URLROOT ?>Pages/writeWiki" class="bg-purple-600 text-white px-4 py-2 rounded-md">Write</a>
+            <a href="<?=URLROOT?>UsersController/LogOut" class="text-purple-600 text-lg hover:underline">log out</a>
+
         <?php } else { ?>
             <div class="flex items-center space-x-2">
                 <a href="<?=URLROOT?>Pages/login" class="text-purple-600 text-lg hover:underline">Log in</a>

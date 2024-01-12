@@ -2,7 +2,7 @@
 
 <div class="bg-gradient-to-br from-purple-700 to-pink-500 min-h-screen flex flex-col justify-center items-center">
     <div class="bg-white rounded-lg shadow-lg p-8 max-w-md">
-        <h1 class="text-4xl font-bold text-center text-purple-700 mb-8">Welcome <?=$_SESSION['username']?></h1>
+        <h1 class="text-4xl font-bold text-center text-purple-700 mb-8">Welcome</h1>
         <form class="space-y-6" action="<?= URLROOT ?>UsersController/login" method="post">
             <div>
                 <label class="block text-gray-700 font-bold mb-2" for="email">
