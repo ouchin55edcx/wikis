@@ -4,6 +4,8 @@ class Pages extends Controller
     private $categoryModel;
     private $wikiModel;
     private $tagModel;
+    private $userModel;
+
     function __construct() {
         $this->categoryModel = $this->model('category');
         $this->wikiModel = $this->model('wiki');
@@ -27,6 +29,7 @@ class Pages extends Controller
         ];
         $this->view('home',$data);
     }
+
     public function wiki()
     {
         $wikisCorrect = [];
@@ -58,7 +61,15 @@ class Pages extends Controller
 
     public function notfound()
     {
-        $this->view('404');
+        $this->view('notfound');
+    }
+    public function sign()
+    {
+        $this->view('sign');
+    }
+    public function login()
+    {
+        $this->view('login');
     }
 
     public function dashboard() {
@@ -121,4 +132,6 @@ class Pages extends Controller
     }
 
 
+
 }
+    
