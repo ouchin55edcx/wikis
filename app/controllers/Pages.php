@@ -71,6 +71,17 @@ class Pages extends Controller
     {
         $this->view('login');
     }
+    // public function Mewiki($user_id)
+    // {
+    //     $Wiki = $this->wikiModel->getWikiByUserId($user_id);
+    //     $data = [   
+        
+    //         'Wikis' => $Wiki
+
+    //     ];
+        
+    //     $this->view('Mewiki',$data);
+    // }
 
     public function dashboard() {
         $categories =  $this->categoryModel->getCategories();
