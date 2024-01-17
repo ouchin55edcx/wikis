@@ -23,6 +23,9 @@ class Core
             if (file_exists('../app/controllers/' . ucwords($url[0]) . '.php')) {
                 $this->Controller = ucwords($url[0]);
                 unset($url[0]);
+            }else {
+                $this->Controller = 'notfound';
+                $this->method = 'notfound';
             }
         }
         //require the controller
@@ -35,7 +38,7 @@ class Core
             if (method_exists($this->Controller, $url[1])) {
                 $this->method = $url[1];
                 unset($url[1]);
-            }
+            }else $this->method = 'notfound';
         }
     
         $this->param = $url ? array_values($url) : []; //ternary operator

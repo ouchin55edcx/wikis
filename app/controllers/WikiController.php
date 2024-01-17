@@ -101,12 +101,32 @@ class WikiController extends Controller
             } else {
                 echo "Invalid file upload data.";
             }
+            
+        }
+        $this->tagWikiModel->DeleteTagByWikiId($idWiki);
+        foreach ($tagArray as $IdTag) {
+            $this->tagWikiModel->insert($idWiki, $IdTag);
         }
         $this->wikiModel->updateWikiSansImage($title,$content,$select_category,$idWiki) ;
+
         redirect('¨Pages/wiki');
 
     }
-
-
+    public function RestoreWiki($wiki_id) {
+        $idWiki = $_POST['$wiki_id'];
+        $this->wikiModel->RestoreWiki($wiki_id);
+        redirect('Pages/ArchWiki');
+        
+    }
+    public function ArchWiki($wiki_id) {
+        $idWiki = $_POST['$wiki_id'];
+        $this->wikiModel->ArchWiki($wiki_id);
+        redirect('Pages/ArchWiki');
+        
+    }
+    public function deleteWiki($id) {
+        $this->wikiModel->Delete($id);
+        redirect('Pages/wiki');
+    }
 
 }

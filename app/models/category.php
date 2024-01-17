@@ -9,7 +9,7 @@ class Category
 
     public function getCategories()
     {
-        $this->db->query("SELECT * FROM Categories ORDER BY created_at DESC, updated_at DESC");
+        $this->db->query("SELECT * FROM Categories ORDER BY  updated_at DESC");
         $result = $this->db->fetchAll();
         return $result ;
     }
@@ -50,4 +50,5 @@ class Category
         return $result ;
         
     }
+
 }

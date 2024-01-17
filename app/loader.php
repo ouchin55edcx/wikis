@@ -1,8 +1,5 @@
 <?php
-session_start();
-// $_SESSION["user"] = $user;
-// $_SESSION["user"]->username =$userId;   
-// session_destroy();                   
+session_start();                
 include_once 'configs/config.php';
 include_once 'helpers/redirect.php';
 

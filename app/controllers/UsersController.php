@@ -9,20 +9,25 @@ class UsersController extends Controller
     }
     public function sign()
     {
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') { 
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $username = htmlspecialchars(trim($_POST['username']));
             $email = htmlspecialchars(trim($_POST['email']));
             $password = htmlspecialchars(trim($_POST['password']));
             $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-
-            // if ($this->userModel->findByEmail($email)) {
-            //     $_SESSION['message'] = ['type' => 'error', 'text' => 'Email is already signed.'];
-            //     $this->view('Pages/sign');
-            //     exit();
-            // }
-
-            $newuser = $this->userModel->signUser($username, $email, $hashedPassword);
-            if ($newuser) {
+    
+            // Check if the email already exists
+            $existingUser = $this->userModel->getUserByEmail($email);
+            if ($existingUser) {
+                // Display alert and redirect using JavaScript
+                echo "<script>alert('This email is already registered. Please use a different email.');</script>";
+                echo "<script>window.location.href = '".URLROOT."Pages/sign';</script>";
+                exit();
+            }
+    
+            // If the email doesn't exist, proceed with user registration
+            $newUser = $this->userModel->signUser($username, $email, $hashedPassword);
+    
+            if ($newUser) {
                 $_SESSION['message'] = ['type' => 'success', 'text' => 'Registration successful.'];
                 redirect('Pages/login');
                 exit();
@@ -32,8 +37,8 @@ class UsersController extends Controller
         } else {
             $this->view('Pages/sign');
         }
-
     }
+
     public function login()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -46,14 +51,22 @@ class UsersController extends Controller
                 // Avoid storing the entire user object in the session
                 $_SESSION["user_id"] = $user->user_id;
                 $_SESSION["username"] = $user->username;
-                // var_dump($_SESSION["user"]);
-
+                $_SESSION["is_admin"] = $user->is_admin;
+    
                 $_SESSION['message'] = ['type' => 'success', 'text' => 'Login successful.'];
-                redirect('Pages/home');  
+    
+                if ($user->is_admin == 1) {
+                    // Redirect to the admin dashboard if the user is an admin
+                    redirect('Admin/dashboard');
+                } else {
+                    // Redirect to the home page for non-admin users
+                    redirect('Pages/home');
+                }
+    
                 exit();
             } else {
                 $_SESSION['message'] = ['type' => 'error', 'text' => 'Invalid email or password'];
-                $this->view('Pages/login');
+                redirect('Pages/login');
                 exit();
             }
         } else {

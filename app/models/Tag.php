@@ -47,4 +47,7 @@ class Tag
         $result = $this->db->fetch();
         return $result ;
     }
+
+
+
 }

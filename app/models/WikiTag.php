@@ -20,4 +20,10 @@ class WikiTag
         $result = $this->db->fetchAll();
         return $result ;
     }
+    public function DeleteTagByWikiId($id) {
+        $this->db->query("DELETE FROM `wikitags` WHERE `wiki_id`= :wiki_id");
+        $this->db->bind(':wiki_id', $id);
+        $this->db->execute();
+
+    }
 }

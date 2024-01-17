@@ -32,4 +32,16 @@ class TagController extends Controller
         redirect('Pages/tag');
     }
 
+    public function DisplayTag(){
+        $tag = $this->tagModel->getAllTag();
+        $data = [
+            'tag' =>$tag
+        ];
+        var_dump($tag);die();
+        $this->view('tagP',$data);
+
+        
+
+    }
+
 }

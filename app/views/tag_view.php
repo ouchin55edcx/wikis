@@ -1,34 +1,51 @@
-<?php require_once APPROOT . '/views/inc/head.php' ?>
+<?php require_once APPROOT . '/views/inc/head.php';
+if (!isset($_SESSION['user_id']) && $_SESSION['is_admin'] == 0)  {
+    redirect('Pages/login');
+}
 
-<!-- Client Table -->
-<div class="flex flex-col justify-between min-h-screen bg-gradient-to-r from-purple-500 to-pink-500 dark:bg-gray-700 text-black dark:text-white">
+?>
+<div x-data="setup()" :class="{ 'dark': isDark }">
+    <div class="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-gray-400 text-black dark:text-white z-10">
 
-    <div class="flex justify-end">
         <?php require_once APPROOT . '/views/inc/sideBar.php' ?>
-        <a href="<?= URLROOT ?>TagController/AddTag" class="relative ml-4">
-            <button class="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-full">
-                Add
-                <img class="w-8 h-8 ml-2" src="<?= URLROOT ?>img/992651.png" alt="">
-            </button>
-        </a>
-    </div>
 
-    <div class="mt-4 mx-4 flex-grow">
-        <div class="w-full overflow-hidden rounded-lg shadow-xs">
-            <div class="w-full overflow-x-auto">
-                <table class="w-full border border-gray-300">
-                    <thead>
-                        <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b bg-gray-50">
-                            <th class="px-4 py-2">Categorie</th>
-                            <th class="px-4 py-2">Action</th>
-                            <th class="px-4 py-2">Date</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-gray-200">
+        <div class="h-full ml-14 mb-10 md:ml-64 relative ">
+
+
+            <!-- Add Category Link -->
+            <a href="<?= URLROOT ?>TagController/AddTag" class="relative text-white">
+                <button class="bg-gray-600 rounded-full w-48 h-16 text-white font-semibold m-2 relative left">
+                    <div class="flex gap-3 justify-center items-center">
+                        <span>
+                            <svg class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" />
+                            </svg>
+                        </span>
+                        <span class="text-xl">Add</span>
+                    </div>
+                </button>
+            </a>
+
+            <!-- Category Table -->
+            <div class=" mx-4">
+                <div class="w-full overflow-hidden rounded-lg shadow-xs">
+                    <div class="w-full overflow-x-auto">
+                        <table class="w-full border border-gray-300">
+                            <thead>
+                                <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b bg-gray-50">
+                                    <th class="px-4 py-2">Tag</th>
+                                    <th class="px-4 py-2">Date</th>
+                                    <th class="px-4 py-2">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200">
                         <?php foreach ($data['tag'] as $tag) : ?>
                             <tr class="hover:bg-gray-100">
                                 <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5">
                                     <p><?php echo $tag->tag_name; ?></p>
+                                </td>
+                                <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5">
+                                    <p><?php echo $tag->created_at; ?></p>
                                 </td>
                                 <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5">
                                     <div class="flex space-x-4">
@@ -46,16 +63,15 @@
                                         </a>
                                     </div>
                                 </td>
-                                <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5">
-                                    <p><?php echo $tag->created_at; ?></p>
-                                </td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
-                </table>
+                        </table>
+                    </div>
+                </div>
             </div>
+            <!-- ./Category Table -->
         </div>
     </div>
 </div>
-
 <?php require_once APPROOT . '/views/inc/footer.php' ?>

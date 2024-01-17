@@ -1,5 +1,5 @@
 <?php
-class Pages extends Controller
+class Pages extends Controller 
 {
     private $categoryModel;
     private $wikiModel;
@@ -10,11 +10,12 @@ class Pages extends Controller
         $this->categoryModel = $this->model('category');
         $this->wikiModel = $this->model('wiki');
         $this->tagModel = $this->model('tag');
+        $this->userModel = $this->model('User');
     }
     public function home()
     {
         $wikisCorrect = [];
-        $wikis = $this->wikiModel->getWiki();
+        $wikis = $this->wikiModel->getTopWiki();
         foreach ($wikis as $wiki) {
             $tagNamesWithVergule = $wiki -> tag_names;
             $tagNameArray = explode(', ',$tagNamesWithVergule);
@@ -67,23 +68,68 @@ class Pages extends Controller
     {
         $this->view('sign');
     }
+    public function search()
+    {
+        // Check if it's an AJAX request
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['searchTerm'])) {
+            $searchTerm = $_POST['searchTerm'];
+
+            $searchResults = $this->searchWikiTagCategory($searchTerm);
+
+            echo json_encode($searchResults);
+            exit;
+        }
+
+    }
+    public function searchWikiTagCategory($searchTerm)
+    {
+        $searchResults = [];
+    
+        // Search by Wiki
+        $wikiResults = $this->wikiModel->searchWiki($searchTerm);
+        $searchResults['wikis'] = $wikiResults; 
+        return $searchResults;
+ 
+    }
+
     public function login()
     {
         $this->view('login');
     }
-    // public function Mewiki($user_id)
-    // {
-    //     $Wiki = $this->wikiModel->getWikiByUserId($user_id);
-    //     $data = [   
-        
-    //         'Wikis' => $Wiki
+    public function tagP()
+    {
+        $this->view('tagP');
+    }
+    public function ArchWiki()
+    {
+        $wikisCorrect = [];
+        $wikis = $this->wikiModel->getWikiForAdmin();
+        foreach ($wikis as $wiki) {
+            $tagNamesWithVergule = $wiki -> tag_names;
+            $tagNameArray = explode(', ',$tagNamesWithVergule);
+            $wiki->tag_names = $tagNameArray;
+            array_push($wikisCorrect,$wiki);
+        }
+        $categories =  $this->categoryModel->getCategories();
+        $data = [   
+            
+            'categories' => $categories,
+            'wiki' => $wikisCorrect
+        ];
+        $this->view('ArchWiki',$data);
 
-    //     ];
-        
-    //     $this->view('Mewiki',$data);
-    // }
+    }
+    public function AwikiCnt($id)
+    {
+        $wiki = $this->wikiModel->getWikiById($id);
+        $data = [   
+            'wiki' => $wiki
+        ];
+        $this->view('AwikiCnt',$data);
+    }
 
     public function dashboard() {
+
         $categories =  $this->categoryModel->getCategories();
         $strCat=$this->categoryModel->categoryCount();
         $strWiki = $this->wikiModel->wikiCount();
@@ -132,17 +178,14 @@ class Pages extends Controller
         $this->view('categorieCnt',$data);
 
     }
-    public function wikiCnt()
+    public function wikiCnt($id)
     {
-        $categories =  $this->categoryModel->getTopCategories();
-        $wiki = $this->wikiModel->getTopWiki();
+        $wiki = $this->wikiModel->getWikiById($id);
         $data = [   
             'wiki' => $wiki
         ];
         $this->view('wikiCnt',$data);
     }
-
-
 
 }
     
